@@ -1,0 +1,30 @@
+// -----------------------------
+// Member 2: Location and Road Management (Pulindu)
+// -----------------------------
+case "1":
+    System.out.print("Enter location name: ");
+    String loc = sc.nextLine();
+    cityGraph.addLocation(loc);
+    locationTree.root = locationTree.insert(locationTree.root, loc);
+    break;
+
+case "2":
+    System.out.print("Enter location name to remove: ");
+    cityGraph.removeLocation(sc.nextLine());
+    break;
+
+case "3":
+    System.out.print("Enter source: ");
+    String src = sc.nextLine();
+    System.out.print("Enter destination: ");
+    String dest = sc.nextLine();
+    cityGraph.addRoad(src, dest);
+    break;
+
+case "4":
+    System.out.print("Enter source: ");
+    src = sc.nextLine();
+    System.out.print("Enter destination: ");
+    dest = sc.nextLine();
+    cityGraph.removeRoad(src, dest);
+    break;
