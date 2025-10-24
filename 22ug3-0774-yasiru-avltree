@@ -1,0 +1,23 @@
+// -----------------------------
+// Member 3: AVL Tree for Location Data (Yasiru)
+// -----------------------------
+static class AVLNode {
+    String key;
+    int height;
+    AVLNode left, right;
+
+    AVLNode(String key) {
+        this.key = key;
+        this.height = 1;
+    }
+}
+
+static class AVLTree {
+    AVLNode root;
+    ...
+    void displayLocations() {
+        System.out.println("\n--- Locations (AVL Tree In-Order) ---");
+        inOrder(root);
+        System.out.println();
+    }
+}
