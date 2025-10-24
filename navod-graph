@@ -1,0 +1,55 @@
+// -----------------------------
+// Member 1: Graph Structure (Navod)
+// -----------------------------
+static class Graph {   
+    private Map<String, List<String>> adjList = new HashMap<>();
+
+    // Add new location (vertex)
+    public void addLocation(String name) {
+        if (!adjList.containsKey(name)) {
+            adjList.put(name, new ArrayList<>());
+            System.out.println("Location added: " + name);
+        } else {
+            System.out.println("Location already exists.");
+        }
+    }
+
+    // Add road (edge)
+    public void addRoad(String src, String dest) {
+        if (!adjList.containsKey(src) || !adjList.containsKey(dest)) {
+            System.out.println("Both locations must exist first.");
+            return;
+        }
+        if (!adjList.get(src).contains(dest)) {
+            adjList.get(src).add(dest);
+            adjList.get(dest).add(src);
+            System.out.println("Road added between " + src + " and " + dest);
+        } else {
+            System.out.println("Road already exists.");
+        }
+    }
+
+    // BFS Traversal
+    public void bfsTraversal(String start) {
+        if (!adjList.containsKey(start)) {
+            System.out.println("Start location not found.");
+            return;
+        }
+        Set<String> visited = new HashSet<>();
+        Queue<String> queue = new LinkedList<>();
+        queue.add(start);
+        visited.add(start);
+        System.out.println("\nBFS Traversal from " + start + ":");
+        while (!queue.isEmpty()) {
+            String node = queue.poll();
+            System.out.print(node + " ");
+            for (String neighbor : adjList.get(node)) {
+                if (!visited.contains(neighbor)) {
+                    visited.add(neighbor);
+                    queue.add(neighbor);
+                }
+            }
+        }
+        System.out.println();
+    }
+}
